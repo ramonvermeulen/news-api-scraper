@@ -5,9 +5,13 @@ import datetime
 
 
 def job(config):
-    ts_file = open('../lastnews_datetime', 'w')
-    timestamp = datetime.datetime.now().isoformat()
-    ts_file.write(timestamp)
+    datetime_instance = datetime.datetime.strptime('2019-01-04T16:41:24+0200', "%Y-%m-%dT%H:%M:%S%z")
+    write_timestamp_to_file(datetime_instance)
+
+
+def write_timestamp_to_file(datetime_instance):
+    ts_file = open('../last_news_update', 'w')
+    ts_file.write(datetime_instance.isoformat())
     ts_file.close()
 
 
