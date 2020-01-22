@@ -1,2 +1,4 @@
 ### News API scraper
-Information coming soon
+
+
+Powered by [**NewsAPI.org**](https://newsapi.org/)
