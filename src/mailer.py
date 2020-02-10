@@ -1,4 +1,7 @@
 import smtplib
+import logging
+import datetime
+import sys
 
 
 class Mailer:
@@ -7,6 +10,11 @@ class Mailer:
         self.sender_password = sender_password
         self.smtp_server_address = smtp_server_address
         self.smtp_port = smtp_port
+        self._setup_logger()
+
+    @staticmethod
+    def _setup_logger():
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
     def send_mail(self, recipients, subject, body):
         server = smtplib.SMTP(self.smtp_server_address, self.smtp_port)
@@ -19,7 +27,6 @@ class Mailer:
                                 'Subject: %s' % subject,
                                 '', body])
             server.sendmail(self.sender_mail, recipients, body)
-            print('email sent')
+            logging.info(f'[{datetime.datetime.now()}] - Email send to {recipients}')
         except Exception as e:
-            print('error sending mail')
-            print(e)
+            logging.exception(f'[{datetime.datetime.now()}] - Error occurred while trying to send Email')
