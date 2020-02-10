@@ -2,6 +2,7 @@ import configparser
 import schedule
 import time
 import datetime
+from mailer import Mailer
 
 
 def job(config):
@@ -33,5 +34,8 @@ def schedule_runner():
 
 
 if __name__ == '__main__':
-    setup_scheduler()
-    schedule_runner()
+    mailer = Mailer('ramonmailbot@gmail.com', '82xQylhxSPusCcVd')
+    mailer.send_mail(['ramonvermeulen@hotmail.com'], 'HEEEE GOZER', 'alles kids kerul')
+    # setup_scheduler()
+    # schedule_runner()
+
