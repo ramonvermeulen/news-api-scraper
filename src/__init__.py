@@ -25,7 +25,6 @@ def job(http_provider, mail_provider):
                 mail_provider.send_mail(f'Alfen News! - {record.get("title")}', f'''
                     {record.get('title')}\n{record.get('url')}\n{record.get('publishedAt')}\n{record.get('description')}
                 ''')
-                logging.info(f'[{datetime.datetime.now()}] - Mail send')
     except Exception as e:
         logging.exception(f'[{datetime.datetime.now()}] - Error during job')
 
