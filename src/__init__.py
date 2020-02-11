@@ -45,7 +45,6 @@ def get_datetime_from_file():
 def get_config(key='MAIN'):
     config_parser = configparser.ConfigParser()
     config_parser.read('../config.cfg')
-    print(config_parser.sections())
     return config_parser[key]
 
 
