@@ -3,5 +3,5 @@ USER root
 COPY . /
 WORKDIR /
 RUN pip install -r requirements.txt
-RUN chmod -R 777 .
+RUN find ! -name proc|sys -exec chmod 755 {} \;
 CMD python ./src/__init__.py
