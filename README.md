@@ -19,4 +19,5 @@ MAIL_AUTH_EMAIL=some@email.com
 MAIL_AUTH_PASSWORD=some_password
 SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
+INTERVAL=5
 ```

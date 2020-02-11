@@ -64,7 +64,7 @@ def setup_scheduler():
                     mail_config['SMTP_PORT'],
                     json.loads(mail_config['MAIL_RECEIVERS']))
 
-    schedule.every(10).seconds.do(job, http_provider, mail_provider)
+    schedule.every(int(config['INTERVAL'])).minutes.do(job, http_provider, mail_provider)
 
 
 def _setup_logger():
