@@ -25,6 +25,7 @@ def job(http_provider, mail_provider):
                 mail_provider.send_mail(f'Alfen News! - {record.get("title")}', f'''
                     {record.get('title')}\n{record.get('url')}\n{record.get('publishedAt')}\n{record.get('description')}
                 ''')
+                write_timestamp_to_file(datetime.datetime.now())
     except Exception as e:
         logging.exception(f'[{datetime.datetime.now()}] - Error during job')
 
@@ -72,6 +73,7 @@ def _setup_logger():
 
 
 def schedule_runner():
+    logging.info(f'[{datetime.datetime.now()}] - Scheduler started running after successful setup')
     while True:
         schedule.run_pending()
         time.sleep(1)
